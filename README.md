@@ -32,3 +32,41 @@ with open(output_file, mode='w', newline='', encoding='utf-8') as file:
 
 print(f"PDF data successfully saved to {output_file}")
 
+### JSON to CSV/Excel
+Clean and transform JSON data into CSV/Excel format.  
+**Libraries:** `pandas`, `json`
+
+```python
+import json
+import pandas as pd
+
+json_path = "path/to/your/file.json"
+
+# Reading JSON data with UTF-8 encoding
+with open(json_path, "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+# Flattening JSON and saving to CSV
+df = pd.json_normalize(data)
+df.to_csv("output.csv", index=False)
+print("JSON data successfully saved to output.csv")
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://example.com"
+response = requests.get(url)
+
+if response.status_code == 200:
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Extracting all H1 and H2 tags from the page
+    titles = soup.find_all(['h1', 'h2'])
+    
+    for title in titles:
+        print(f"Found title: {title.get_text(strip=True)}")
+else:
+    print(f"Failed to retrieve data. Status code: {response.status_code}")
+```
+
+
