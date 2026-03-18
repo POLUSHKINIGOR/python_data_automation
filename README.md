@@ -13,12 +13,14 @@ This repository contains a collection of Python scripts designed to automate rou
     * **Output**: Generates an `output.csv`.
 
 ### 3. PDF to CSV Converter (`pdf_to_csv/`)
-* **`pdf_to_csv.py`**: Extracts text content from PDF documents and saves it into a CSV file using the `pdfplumber` library.
+* **`pdf_to_csv.py`**: Extracts text content from PDF documents and saves it into a CSV file using `pdfplumber`.
     * **Input**: Uses `sample.pdf` from the current directory.
     * **Output**: Generates a structured `output.csv`.
 
 ### 4. Web Scraping Demo (`web_scraping_demo/`)
-* Examples of extracting data from websites for further analysis or storage.
+* **`web_scraping_demo.py`**: Extracts tabular data from websites using `requests` and `BeautifulSoup`.
+    * **Function**: Scrapes data from a specified URL and saves the table rows into a CSV file.
+    * **Output**: Generates `web_scraping_output.csv`.
 
 ## 🛠️ Installation
 
@@ -26,7 +28,5 @@ To run the scripts, you need **Python 3.x**. Install the necessary dependencies:
 
 ```bash
 pip install pandas requests beautifulsoup4 pdfplumber
-```
-
 
 
