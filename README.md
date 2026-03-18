@@ -1,53 +1,20 @@
 # Python Data Automation
 
-This repository contains Python projects for data automation, including PDF extraction to CSV/Excel, JSON/CSV processing, web scraping, and automation of repetitive tasks.
+This project provides a set of Python scripts for automating routine tasks, including file management, data format conversion, and web scraping.
 
-## Projects
+## 📁 Project Structure
 
-### PDF to CSV/Excel
-Extract structured data from PDF files and save as CSV.  
-**Libraries:** `pdfplumber`, `csv`
+* **automation_scripts/**: Contains `automation_examples.py`, which renames and organizes `.txt` files into a dedicated folder.
+* **json_to_csv/**: Tools for converting JSON data into CSV format.
+* **pdf_to_csv/**: Scripts for extracting data from PDF files to CSV.
+* **web_scraping_demo/**: Examples of extracting data from websites.
 
-```python
-import pdfplumber
-import csv
+## 🛠️ Installation
 
-pdf_path = "path/to/your/file.pdf"
-output_file = "output.csv"
-all_text = []
-
-with pdfplumber.open(pdf_path) as pdf:
-    for page in pdf.pages:
-        text = page.extract_text()
-        if text:
-            all_text.extend(text.split('\n'))
-
-with open(output_file, mode='w', newline='', encoding='utf-8') as file:
-    writer = csv.writer(file)
-    writer.writerow(["extracted_text"])
-    for line in all_text:
-        writer.writerow([line])
-
-print(f"PDF data successfully saved to {output_file}")
-
-### JSON to CSV/Excel
-Clean and transform JSON data into CSV/Excel format.  
-**Libraries:** `pandas`, `json`
-
-```python
-import json
-import pandas as pd
-
-json_path = "path/to/your/file.json"
-
-# Reading JSON data with UTF-8 encoding
-with open(json_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
-
-# Flattening JSON and saving to CSV
-df = pd.json_normalize(data)
-df.to_csv("output.csv", index=False)
-print("JSON data successfully saved to output.csv")
+To run the scripts in this repository, you need to have **Python 3.x** installed. You will also need to install the following dependencies:
+```bash
+pip install pandas requests beautifulsoup4 pdfplumber
+```
 
 
 
